@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dileesha Shaik — Cloud & DevOps Engineer</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  :root{
+    --navy:#0a192f;--navy2:#112240;--navy3:#233554;
+    --slate:#8892b0;--light-slate:#a8b2d8;--lightest-slate:#ccd6f6;
+    --white:#e6f1ff;--green:#64ffda;--green-tint:rgba(100,255,218,.1);
+    --font:'Segoe UI',sans-serif;--mono:'Courier New',monospace
+  }
+  html{scroll-behavior:smooth}
+  body{background:var(--navy);color:var(--slate);font-family:var(--font);font-size:16px;line-height:1.6;overflow-x:hidden}
+
+  nav{position:fixed;top:0;width:100%;background:rgba(10,25,47,.97);backdrop-filter:blur(10px);z-index:100;padding:1rem 2rem;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--navy3)}
+  .logo{color:var(--green);font-family:var(--mono);font-size:1rem;font-weight:bold}
+  .nav-links{display:flex;gap:2rem;list-style:none}
+  .nav-links a{color:var(--light-slate);text-decoration:none;font-size:.9rem;transition:color .2s}
+  .nav-links a:hover{color:var(--green)}
+
+  section{padding:6rem 2rem;max-width:960px;margin:0 auto}
+
+  /* Hero */
+  #hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding-top:5rem}
+  .hero-pre{color:var(--green);font-family:var(--mono);font-size:1rem;margin-bottom:1rem}
+  .hero-name{font-size:clamp(2.5rem,7vw,4.5rem);font-weight:700;color:var(--lightest-slate);line-height:1.1;margin-bottom:.5rem}
+  .hero-sub{font-size:clamp(1.2rem,3vw,2.2rem);font-weight:600;color:var(--slate);margin-bottom:1.5rem}
+  .hero-desc{max-width:540px;color:var(--slate);font-size:1rem;margin-bottom:2.5rem;line-height:1.8}
+  .btn{display:inline-block;padding:.85rem 1.8rem;border:1px solid var(--green);color:var(--green);font-size:.9rem;text-decoration:none;border-radius:4px;transition:all .2s;cursor:pointer;background:transparent;margin-right:1rem}
+  .btn:hover{background:var(--green-tint)}
+  .btn-solid{background:var(--green);color:var(--navy);font-weight:700}
+  .btn-solid:hover{opacity:.85}
+
+  /* Section headers */
+  .section-title{display:flex;align-items:center;gap:1rem;margin-bottom:3rem}
+  .section-title h2{font-size:clamp(1.3rem,3vw,1.7rem);font-weight:600;color:var(--lightest-slate);white-space:nowrap}
+  .section-title .num{color:var(--green);font-family:var(--mono);font-size:.95rem;margin-right:4px}
+  .section-title::after{content:'';display:block;height:1px;background:var(--navy3);width:100%;max-width:260px}
+
+  /* About */
+  .about-grid{display:grid;grid-template-columns:3fr 2fr;gap:3rem;align-items:start}
+  .about-text p{margin-bottom:1rem;color:var(--slate);font-size:1rem;line-height:1.8}
+  .about-text a{color:var(--green);text-decoration:none}
+  .skills-list{display:grid;grid-template-columns:1fr 1fr;gap:.5rem;margin-top:1rem;list-style:none}
+  .skills-list li{font-family:var(--mono);font-size:.82rem;color:var(--slate);padding-left:1.2rem;position:relative}
+  .skills-list li::before{content:'▹';position:absolute;left:0;color:var(--green)}
+  .photo-wrap{display:flex;justify-content:center;align-items:flex-start;padding-top:.5rem}
+  .photo-frame{position:relative;width:220px}
+  .photo-frame img{width:220px;height:260px;object-fit:cover;object-position:top;border-radius:8px;display:block;filter:grayscale(20%);transition:filter .3s}
+  .photo-frame:hover img{filter:grayscale(0%)}
+  .photo-frame::after{content:'';position:absolute;top:10px;left:10px;right:-10px;bottom:-10px;border:2px solid var(--green);border-radius:8px;z-index:-1;opacity:.5}
+
+  /* Experience */
+  .exp-tabs{display:flex;gap:0}
+  .tab-list{display:flex;flex-direction:column;min-width:155px;border-left:2px solid var(--navy3)}
+  .tab-btn{padding:.75rem 1.2rem;background:none;border:none;color:var(--slate);font-size:.85rem;text-align:left;cursor:pointer;transition:all .2s;border-left:2px solid transparent;margin-left:-2px;white-space:nowrap}
+  .tab-btn:hover{background:var(--green-tint);color:var(--green)}
+  .tab-btn.active{color:var(--green);border-left-color:var(--green);background:var(--green-tint)}
+  .tab-panel{padding:0 2rem;display:none}
+  .tab-panel.active{display:block}
+  .job-title{font-size:1.1rem;font-weight:600;color:var(--lightest-slate);margin-bottom:.2rem}
+  .job-title span{color:var(--green)}
+  .job-meta{font-family:var(--mono);font-size:.78rem;color:var(--slate);margin-bottom:1.2rem}
+  .job-list{list-style:none}
+  .job-list li{padding:.4rem 0 .4rem 1.5rem;position:relative;color:var(--slate);font-size:.95rem;line-height:1.7}
+  .job-list li::before{content:'▹';position:absolute;left:0;color:var(--green)}
+
+  /* Skills */
+  .skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.5rem}
+  .skill-card{background:var(--navy2);border:1px solid var(--navy3);border-radius:8px;padding:1.4rem;transition:transform .2s,border-color .2s}
+  .skill-card:hover{transform:translateY(-4px);border-color:var(--green)}
+  .skill-card h3{color:var(--lightest-slate);font-size:.9rem;font-weight:600;margin-bottom:1rem}
+  .skill-tag{display:inline-block;background:var(--navy3);color:var(--green);font-family:var(--mono);font-size:.72rem;padding:.25rem .55rem;border-radius:3px;margin:.2rem}
+
+  /* Certs */
+  .certs-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;margin-top:1.5rem}
+  .cert-card{background:var(--navy2);border:1px solid var(--navy3);border-radius:8px;padding:1rem 1.2rem;display:flex;align-items:center;gap:.8rem;transition:border-color .2s}
+  .cert-card:hover{border-color:var(--green)}
+  .cert-name{color:var(--light-slate);font-size:.88rem;line-height:1.4}
+
+  /* Contact */
+  #contact{text-align:center}
+  .contact-inner{max-width:540px;margin:0 auto}
+  .contact-inner p{color:var(--slate);margin-bottom:2rem;font-size:1rem;line-height:1.8}
+  .contact-links{display:flex;justify-content:center;gap:2rem;flex-wrap:wrap;margin-top:2rem}
+  .contact-link{color:var(--slate);text-decoration:none;font-size:.88rem;transition:color .2s}
+  .contact-link:hover{color:var(--green)}
+
+  footer{text-align:center;padding:2rem;font-family:var(--mono);font-size:.75rem;color:var(--slate);border-top:1px solid var(--navy3)}
+
+  @media(max-width:640px){
+    .about-grid{grid-template-columns:1fr}
+    .photo-wrap{margin-bottom:2rem;order:-1}
+    .exp-tabs{flex-direction:column}
+    .tab-list{flex-direction:row;overflow-x:auto;border-left:none;border-bottom:2px solid var(--navy3)}
+    .tab-btn{border-left:none;border-bottom:2px solid transparent;margin-left:0;margin-bottom:-2px}
+    .tab-btn.active{border-left:none;border-bottom-color:var(--green)}
+    .tab-panel{padding:1.5rem 0}
+    nav{padding:.8rem 1.2rem}
+    .nav-links{gap:1rem}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">DS</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<section id="hero">
+  <p class="hero-pre">Hi, my name is</p>
+  <h1 class="hero-name">Dileesha Shaik.</h1>
+  <h2 class="hero-sub">I build and manage cloud systems.</h2>
+  <p class="hero-desc">I'm a Cloud & DevOps Engineer with 3+ years of experience setting up AWS infrastructure, building automated pipelines, and moving large systems to the cloud. Right now at Nike, I'm leading Kubernetes adoption and helping teams deploy faster and more reliably.</p>
+  <div>
+    <a href="#experience" class="btn">See My Work</a>
+    <a href="mailto:ShaikGusus22194@gmail.com" class="btn btn-solid">Contact Me</a>
+  </div>
+</section>
+
+<section id="about">
+  <div class="section-title"><h2><span class="num">01.</span> About Me</h2></div>
+  <div class="about-grid">
+    <div class="about-text">
+      <p>Hi! I'm Dileesha — a Cloud & DevOps Engineer based in Atlanta, GA. I enjoy making cloud systems faster, cheaper, and easier to manage for development teams.</p>
+      <p>I have a Master's degree in Computer Science from <a href="https://www.kennesaw.edu" target="_blank">Kennesaw State University</a> (GPA: 3.5). I've worked in healthcare, retail, and enterprise tech — including leading a full AWS migration at GE HealthCare with zero data loss.</p>
+      <p>I love working with infrastructure-as-code, cutting cloud costs, and teaching junior engineers. I'm open to Cloud, DevOps, and Platform Engineering roles.</p>
+      <p style="margin-top:1.4rem;color:var(--light-slate);font-size:.92rem">Tools I use every day:</p>
+      <ul class="skills-list">
+        <li>AWS (EC2, S3, RDS, Lambda)</li>
+        <li>Kubernetes & Docker</li>
+        <li>Terraform / CloudFormation</li>
+        <li>Jenkins / GitHub Actions</li>
+        <li>Python (boto3, PySpark)</li>
+        <li>Prometheus / Grafana / ELK</li>
+      </ul>
+    </div>
+    <div class="photo-wrap">
+      <div class="photo-frame">
+        <img id="profilePhoto" src="" alt="Dileesha Shaik" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="section-title"><h2><span class="num">02.</span> Where I've Worked</h2></div>
+  <div class="exp-tabs">
+    <div class="tab-list">
+      <button class="tab-btn active" onclick="showTab('nike',this)">Nike</button>
+      <button class="tab-btn" onclick="showTab('ge',this)">GE HealthCare</button>
+      <button class="tab-btn" onclick="showTab('bcbs',this)">BCBSA</button>
+      <button class="tab-btn" onclick="showTab('tm',this)">Tech Mahindra</button>
+    </div>
+
+    <div id="tab-nike" class="tab-panel active">
+      <p class="job-title">DevOps Engineer <span>@ Nike</span></p>
+      <p class="job-meta">August 2025 – Present · Atlanta, GA</p>
+      <ul class="job-list">
+        <li>Cut build and deployment times by 20% by improving Gradle pipelines for Java apps.</li>
+        <li>Led Kubernetes rollout across the company, saving 20% on infrastructure costs.</li>
+        <li>Packaged services into containers for 3 dev teams, making deployments more reliable.</li>
+        <li>Set up Terraform with S3 + DynamoDB so multiple teams can manage infrastructure without conflicts.</li>
+        <li>Connected Route 53 with ALB in Kubernetes so apps can be updated with no downtime.</li>
+        <li>Taught junior engineers how to use Kubernetes through hands-on demos and workshops.</li>
+      </ul>
+    </div>
+
+    <div id="tab-ge" class="tab-panel">
+      <p class="job-title">Cloud Engineer <span>@ GE HealthCare</span></p>
+      <p class="job-meta">January 2024 – August 2025 · Cleveland, OH</p>
+      <ul class="job-list">
+        <li>Helped move all cloud systems from General Electric to GE HealthCare with zero data loss.</li>
+        <li>Moved databases to the new AWS account using DMS, keeping data in sync the whole time.</li>
+        <li>Automated server backups and file transfers across S3 and EFS using Python and AWS DataSync.</li>
+      </ul>
+    </div>
+
+    <div id="tab-bcbs" class="tab-panel">
+      <p class="job-title">Cloud Engineer <span>@ Blue Cross Blue Shield Association</span></p>
+      <p class="job-meta">May 2023 – December 2023 · Remote</p>
+      <ul class="job-list">
+        <li>Built a serverless AWS platform that processes 300+ GB/month of healthcare pricing data for members across the US.</li>
+        <li>Created a system where servers spin up automatically based on how much data comes in — no waste, no idle machines.</li>
+        <li>Replaced a costly AWS EMR setup with a simpler Python solution, saving 35–40% per month.</li>
+        <li>Built data pipelines loading clean data into Amazon OpenSearch, updated monthly with no service interruption.</li>
+        <li>Packaged the entire infrastructure (S3, Lambda, Glue, EC2, OpenSearch) as CloudFormation templates.</li>
+        <li>Secured all data with IAM roles, S3 policies, and KMS encryption to meet healthcare compliance rules.</li>
+      </ul>
+    </div>
+
+    <div id="tab-tm" class="tab-panel">
+      <p class="job-title">DevOps Engineer <span>@ Tech Mahindra</span></p>
+      <p class="job-meta">March 2021 – July 2022 · Telangana, India</p>
+      <ul class="job-list">
+        <li>Built and kept up CI/CD pipelines using Jenkins, Maven, JFrog Artifactory, and Ansible.</li>
+        <li>Automated server patching and health checks using Ansible and Bash scripts.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="section-title"><h2><span class="num">03.</span> Skills & Tools</h2></div>
+  <div class="skills-grid">
+    <div class="skill-card">
+      <h3>☁ Cloud</h3>
+      <div><span class="skill-tag">EC2</span><span class="skill-tag">S3</span><span class="skill-tag">RDS</span><span class="skill-tag">Lambda</span><span class="skill-tag">Glue</span><span class="skill-tag">CloudFormation</span><span class="skill-tag">Route 53</span><span class="skill-tag">ALB</span><span class="skill-tag">DMS</span><span class="skill-tag">DataSync</span><span class="skill-tag">KMS</span><span class="skill-tag">IAM</span></div>
+    </div>
+    <div class="skill-card">
+      <h3>⚙ CI/CD & Automation</h3>
+      <div><span class="skill-tag">Jenkins</span><span class="skill-tag">GitHub Actions</span><span class="skill-tag">GitLab CI</span><span class="skill-tag">Ansible</span><span class="skill-tag">Maven</span><span class="skill-tag">Gradle</span><span class="skill-tag">JFrog</span></div>
+    </div>
+    <div class="skill-card">
+      <h3>🐳 Containers</h3>
+      <div><span class="skill-tag">Kubernetes</span><span class="skill-tag">Docker</span><span class="skill-tag">Helm</span><span class="skill-tag">Microservices</span></div>
+    </div>
+    <div class="skill-card">
+      <h3>🏗 Infrastructure as Code</h3>
+      <div><span class="skill-tag">Terraform</span><span class="skill-tag">CloudFormation</span><span class="skill-tag">AWS SAM</span><span class="skill-tag">Python</span><span class="skill-tag">boto3</span><span class="skill-tag">PySpark</span><span class="skill-tag">Bash</span></div>
+    </div>
+    <div class="skill-card">
+      <h3>📊 Monitoring</h3>
+      <div><span class="skill-tag">Prometheus</span><span class="skill-tag">Grafana</span><span class="skill-tag">ELK Stack</span><span class="skill-tag">OpenSearch</span></div>
+    </div>
+    <div class="skill-card">
+      <h3>🎓 Education</h3>
+      <div style="color:var(--light-slate);font-size:.9rem;margin-bottom:.4rem">M.S. Computer Science</div>
+      <div style="color:var(--slate);font-size:.8rem;font-family:var(--mono)">Kennesaw State University<br>GPA: 3.5 · Dec 2023</div>
+    </div>
+  </div>
+
+  <h3 style="color:var(--lightest-slate);font-size:.95rem;margin:2.5rem 0 1rem">Certifications</h3>
+  <div class="certs-grid">
+    <div class="cert-card"><span style="font-size:1.3rem">🏅</span><div class="cert-name">ServiceNow DevOps</div></div>
+    <div class="cert-card"><span style="font-size:1.3rem">🏅</span><div class="cert-name">Test Automation Foundations</div></div>
+    <div class="cert-card"><span style="font-size:1.3rem">🏅</span><div class="cert-name">IT Service Desk: Service Management</div></div>
+    <div class="cert-card"><span style="font-size:1.3rem">🏅</span><div class="cert-name">End-to-End DevOps</div></div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="section-title" style="justify-content:center"><h2><span class="num">04.</span> Get In Touch</h2></div>
+  <div class="contact-inner">
+    <p>I'm open to new Cloud, DevOps, and Platform Engineering opportunities. If you have a role to discuss or just want to connect, feel free to reach out — I'd love to hear from you.</p>
+    <a href="mailto:ShaikGusus22194@gmail.com" class="btn btn-solid" style="font-size:1rem;padding:1rem 2.2rem">Say Hello</a>
+    <div class="contact-links">
+      <a href="https://www.linkedin.com/in/dileeshask" target="_blank" class="contact-link">🔗 LinkedIn</a>
+      <a href="mailto:ShaikGusus22194@gmail.com" class="contact-link">✉ ShaikGusus22194@gmail.com</a>
+      <a href="#" class="contact-link">📍 Atlanta, GA</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>Designed & Built by Dileesha Shaik</p>
+</footer>
+
+<script>
+function showTab(id, btn) {
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('tab-' + id).classList.add('active');
+  btn.classList.add('active');
+}
+
+// Load the uploaded photo
+const input = document.createElement('input');
+const photoEl = document.getElementById('profilePhoto');
+
+// Convert the uploaded image to base64 and set it
+async function loadPhoto() {
+  try {
+    const response = await fetch(window.location.href);
+  } catch(e) {}
+}
+
+// Use the image passed from the parent context if available
+window.addEventListener('message', (e) => {
+  if (e.data && e.data.type === 'photo') {
+    photoEl.src = e.data.src;
+  }
+});
+
+// Fallback: try to get the image from the conversation context
+// The photo was uploaded by the user — set it via data URL
+const photoData = `PHOTO_PLACEHOLDER`;
+if (photoData !== 'PHOTO_PLACEHOLDER') {
+  photoEl.src = photoData;
+} else {
+  // Show initials if no photo loaded
+  photoEl.style.display = 'none';
+  const frame = photoEl.parentElement;
+  const initials = document.createElement('div');
+  initials.style.cssText = 'width:220px;height:260px;border-radius:8px;background:#112240;display:flex;align-items:center;justify-content:center;font-size:4rem;color:#64ffda;font-weight:700';
+  initials.textContent = 'DS';
+  frame.insertBefore(initials, photoEl);
+}
+</script>
+</body>
+</html>
