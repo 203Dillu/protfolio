@@ -119,8 +119,7 @@
 <section id="hero">
   <p class="hero-pre">Hi, my name is</p>
   <h1 class="hero-name">Dileesha Shaik.</h1>
-  <h2 class="hero-sub">I build and manage cloud systems.</h2>
-  <p class="hero-desc">I'm a Cloud & DevOps Engineer with 3+ years of experience setting up AWS infrastructure, building automated pipelines, and moving large systems to the cloud. Right now at Nike, I'm leading Kubernetes adoption and helping teams deploy faster and more reliably.</p>
+  <h2 class="hero-sub">I design scalable cloud platforms and automate large-scale deployments.</h2>Cloud & DevOps Engineer with 3+ years of experience building production-grade AWS infrastructure, optimizing costs, and enabling high-velocity deployments across microservices environments (100+ services). Currently focused on Kubernetes adoption, infrastructure automation, and platform reliability.</p>
   <div>
     <a href="#experience" class="btn">See My Work</a>
     <a href="mailto:ShaikGusus22194@gmail.com" class="btn btn-solid">Contact Me</a>
@@ -166,12 +165,11 @@
       <p class="job-title">DevOps Engineer <span>@ Nike</span></p>
       <p class="job-meta">August 2025 – Present · Atlanta, GA</p>
       <ul class="job-list">
-        <li>Cut build and deployment times by 20% by improving Gradle pipelines for Java apps.</li>
-        <li>Led Kubernetes rollout across the company, saving 20% on infrastructure costs.</li>
-        <li>Packaged services into containers for 3 dev teams, making deployments more reliable.</li>
-        <li>Set up Terraform with S3 + DynamoDB so multiple teams can manage infrastructure without conflicts.</li>
-        <li>Connected Route 53 with ALB in Kubernetes so apps can be updated with no downtime.</li>
-        <li>Taught junior engineers how to use Kubernetes through hands-on demos and workshops.</li>
+       <li>Reduced build and deployment times by 20% by optimizing Gradle-based CI pipelines and parallelizing build stages.</li>
+       <li>Contributed to Kubernetes (EKS) adoption by containerizing services and defining deployment patterns using Helm, improving deployment consistency across teams.</li>
+       <li>Implemented Terraform remote state management using S3 + DynamoDB, enabling safe multi-team infrastructure provisioning.</li>
+       <li>Designed zero-downtime deployment strategy using ALB + Route 53 with rolling updates in Kubernetes.</li>
+       <li>Improved developer productivity by standardizing CI/CD workflows and mentoring junior engineers on containerization and Kubernetes practices.</li>
       </ul>
     </div>
 
@@ -179,9 +177,9 @@
       <p class="job-title">Cloud Engineer <span>@ GE HealthCare</span></p>
       <p class="job-meta">January 2024 – August 2025 · Remote</p>
       <ul class="job-list">
-        <li>Helped move all cloud systems from General Electric to GE HealthCare with zero data loss.</li>
-        <li>Moved databases to the new AWS account using DMS, keeping data in sync the whole time.</li>
-        <li>Automated server backups and file transfers across S3 and EFS using Python and AWS DataSync.</li>
+        <li>Executed AWS account migration strategy during GE spin-off, ensuring zero data loss using AWS DMS with continuous replication.</li>
+        <li>Designed automated backup and data transfer workflows across S3 and EFS using Python (boto3) and AWS DataSync.</li>
+        <li>Improved data reliability and recovery posture by implementing scheduled backups and monitoring mechanisms.</li>
       </ul>
     </div>
 
@@ -189,12 +187,12 @@
       <p class="job-title">Cloud Engineer <span>@ Blue Cross Blue Shield Association</span></p>
       <p class="job-meta">May 2023 – December 2023 · Remote</p>
       <ul class="job-list">
-        <li>Built a serverless AWS platform that processes 300+ GB/month of healthcare pricing data for members across the US.</li>
-        <li>Created a system where servers spin up automatically based on how much data comes in — no waste, no idle machines.</li>
-        <li>Replaced a costly AWS EMR setup with a simpler Python solution, saving 35–40% per month.</li>
-        <li>Built data pipelines loading clean data into Amazon OpenSearch, updated monthly with no service interruption.</li>
-        <li>Packaged the entire infrastructure (S3, Lambda, Glue, EC2, OpenSearch) as CloudFormation templates.</li>
-        <li>Secured all data with IAM roles, S3 policies, and KMS encryption to meet healthcare compliance rules.</li>
+        <li>Built a serverless data processing platform handling 300+ GB/month using AWS Lambda, S3, and Glue.</li>
+        <li>Designed event-driven architecture to dynamically scale compute resources, eliminating idle infrastructure.</li>
+        <li>Reduced processing costs by 35–40% by replacing EMR workloads with optimized Python-based pipelines.</li>
+        <li>Developed data pipelines feeding Amazon OpenSearch with zero-downtime updates.</li>
+        <li>Defined full infrastructure using CloudFormation, enabling reproducible deployments.</li>
+        <li>Implemented IAM, KMS encryption, and S3 policies to meet healthcare compliance requirements.</li>
       </ul>
     </div>
 
@@ -202,8 +200,9 @@
       <p class="job-title">DevOps Engineer <span>@ Tech Mahindra</span></p>
       <p class="job-meta">March 2021 – July 2022 · Telangana, India</p>
       <ul class="job-list">
-        <li>Built and kept up CI/CD pipelines using Jenkins, Maven, JFrog Artifactory, and Ansible.</li>
-        <li>Automated server patching and health checks using Ansible and Bash scripts.</li>
+        <li>Built and maintained CI/CD pipelines using Jenkins, Maven, and JFrog Artifactory for enterprise applications.</li>
+        <li>Automated server configuration, patching, and health checks using Ansible and Bash scripting.</li>
+        <li>Reduced manual operational overhead by standardizing deployment and maintenance workflows.</li>
       </ul>
     </div>
   </div>
@@ -248,8 +247,43 @@
   </div>
 </section>
 
+<section id="projects">
+  <div class="section-title">
+    <h2><span class="num">04.</span> Key Projects</h2>
+  </div>
+
+  <div class="skills-grid">
+
+    <div class="skill-card">
+      <h3>Kubernetes Cost Optimization Platform</h3>
+      <p style="font-size:.85rem;color:var(--slate);line-height:1.6">
+        Designed a cost optimization system for Kubernetes workloads using resource monitoring and autoscaling strategies.
+      </p>
+      <ul class="job-list">
+        <li>Implemented HPA and Cluster Autoscaler to adjust compute usage dynamically.</li>
+        <li>Reduced idle resource consumption by identifying underutilized pods.</li>
+        <li>Integrated Prometheus + Grafana for real-time monitoring and alerting.</li>
+      </ul>
+    </div>
+
+    <div class="skill-card">
+      <h3>CI/CD Pipeline for Microservices (100+ Services)</h3>
+      <p style="font-size:.85rem;color:var(--slate);line-height:1.6">
+        Built scalable CI/CD pipelines to support multi-team microservices architecture.
+      </p>
+      <ul class="job-list">
+        <li>Designed Jenkins pipelines with parallel stages and automated rollback mechanisms.</li>
+        <li>Integrated Docker-based builds and Kubernetes deployments.</li>
+        <li>Improved deployment success rate and reduced failure recovery time.</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+ 
 <section id="contact">
-  <div class="section-title" style="justify-content:center"><h2><span class="num">04.</span> Get In Touch</h2></div>
+  <div class="section-title" style="justify-content:center"><h2><span class="num">05.</span> Get In Touch</h2></div>
   <div class="contact-inner">
     <p>I'm open to new Cloud, DevOps, and Platform Engineering opportunities. If you have a role to discuss or just want to connect, feel free to reach out — I'd love to hear from you.</p>
     <a href="mailto:ShaikGusus22194@gmail.com" class="btn btn-solid" style="font-size:1rem;padding:1rem 2.2rem">Say Hello</a>
