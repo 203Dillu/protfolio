@@ -291,20 +291,6 @@ window.addEventListener('message', (e) => {
   }
 });
 
-// Fallback: try to get the image from the conversation context
-// The photo was uploaded by the user — set it via data URL
-const photoData = `PHOTO_PLACEHOLDER`;
-if (photoData !== 'PHOTO_PLACEHOLDER') {
-  photoEl.src = photoData;
-} else {
-  // Show initials if no photo loaded
-  photoEl.style.display = 'none';
-  const frame = photoEl.parentElement;
-  const initials = document.createElement('div');
-  initials.style.cssText = 'width:220px;height:260px;border-radius:8px;background:#112240;display:flex;align-items:center;justify-content:center;font-size:4rem;color:#64ffda;font-weight:700';
-  initials.textContent = 'DS';
-  frame.insertBefore(initials, photoEl);
-}
 </script>
 </body>
 </html>
