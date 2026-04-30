@@ -157,9 +157,9 @@
   <div class="exp-tabs">
     <div class="tab-list">
       <button class="tab-btn active" onclick="showJob('nike',this)">Nike</button>
-      <button class="tab-btn active" onclick="showJob('ge',this)">GE HealthCare</button>
-      <button class="tab-btn active" onclick="showJob('bcbs',this)">BCBSA</button>
-      <button class="tab-btn active" onclick="showJob('tm',this)">Tech Mahindra</button>
+      <button class="tab-btn" onclick="showJob('ge',this)">GE HealthCare</button>
+      <button class="tab-btn" onclick="showJob('bcbs',this)">BCBSA</button>
+      <button class="tab-btn" onclick="showJob('tm',this)">Tech Mahindra</button>
     </div>
 
     <div id="tab-nike" class="tab-panel active">
@@ -177,7 +177,7 @@
 
     <div id="tab-ge" class="tab-panel">
       <p class="job-title">Cloud Engineer <span>@ GE HealthCare</span></p>
-      <p class="job-meta">January 2024 – August 2025 · Cleveland, OH</p>
+      <p class="job-meta">January 2024 – August 2025 · Remote</p>
       <ul class="job-list">
         <li>Helped move all cloud systems from General Electric to GE HealthCare with zero data loss.</li>
         <li>Moved databases to the new AWS account using DMS, keeping data in sync the whole time.</li>
@@ -274,7 +274,7 @@ function showJob(id, btn) {
 }
 
 // Load the uploaded photo
-!--const input = document.createElement('input');
+!-- const input = document.createElement('input');
 const photoEl = document.getElementById('profilePhoto');
 
 // Convert the uploaded image to base64 and set it
